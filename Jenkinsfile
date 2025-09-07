@@ -11,5 +11,28 @@ pipeline{
                 cleanWs()
             }
 }
+
+stage("Checkout from SCM"){
+            steps {
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/Shanu3691/dev-mega.git'
+            }
+
+        }
+
+
+        stage("Build the application"){
+            steps {
+               sh "mvn clean package"
+            }
+
+        }
+
+        stage("Test the application"){
+            steps {
+               sh "mvn test"
+            }
+
+        }
     }
+
 }
