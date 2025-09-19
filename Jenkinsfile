@@ -61,10 +61,7 @@ stage("Checkout from SCM"){
             }
 
         }
-
-    }
-
-stage("Build & Push Docker Image") {
+        stage("Build & Push Docker Image") {
             steps {
                 script {
                     docker.withRegistry('',DOCKER_PASS) {
@@ -79,4 +76,6 @@ stage("Build & Push Docker Image") {
             }
 
         }
+
+    }      
 }
